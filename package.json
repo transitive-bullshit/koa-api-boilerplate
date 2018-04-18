@@ -1,7 +1,7 @@
 {
   "name": "koa2-api-boilerplate",
   "version": "0.0.1",
-  "description": "Koa 2 boilerplate.",
+  "description": "Koa 2 API boilerplate with batteries-included.",
   "main": "index.js",
   "repository": "transitive-bullshit/koa2-api-boilerplate",
   "author": "Travis Fischer <travis@automagical.ai>",
