@@ -15,7 +15,6 @@
   - Health check endpoint (`/alive` by default)
 - [koa2-mongoose-crud](https://github.com/transitive-bullshit/koa2-mongoose-crud) - CRUD middleware for Mongoose models
   - Quickly create RESTful APIs over mongodb models
-- Used in production at [Automagical](https://automagical.ai/)
 
 ## License
 
