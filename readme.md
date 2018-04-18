@@ -1,8 +1,8 @@
-# koa2-api-boilerplate
+# koa-api-boilerplate
 
 > [Koa 2](http://koajs.com/) API boilerplate with batteries-included.
 
-[![NPM](https://img.shields.io/npm/v/koa2-api-boilerplate.svg)](https://www.npmjs.com/package/koa2-api-boilerplate) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/koa-api-boilerplate.svg)](https://www.npmjs.com/package/koa-api-boilerplate) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Features
 
