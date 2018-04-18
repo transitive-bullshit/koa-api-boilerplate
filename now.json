@@ -1,0 +1,9 @@
+{
+  "name": "service-name",
+  "alias": "service-name.project.com",
+  "forwardNpm": true,
+  "dotenv": true,
+  "env": {
+    "GOOGLE_APPLICATION_CREDENTIALS": "./.keyfile.json"
+  }
+}

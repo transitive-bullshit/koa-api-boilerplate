@@ -1,0 +1,39 @@
+{
+  "name": "koa2-api-boilerplate",
+  "version": "0.0.1",
+  "description": "Koa 2 boilerplate.",
+  "main": "index.js",
+  "repository": "transitive-bullshit/koa2-api-boilerplate",
+  "author": "Travis Fischer <travis@automagical.ai>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "ava -v && standard",
+    "now-start": "NODE_ENV=production node index.js",
+    "deploy": "test -f $GOOGLE_APPLICATION_CREDENTIALS && cp -f $GOOGLE_APPLICATION_CREDENTIALS ./.keyfile.json && cat .env && NODE_ENV=production now -f",
+    "force-deploy": "yarn run deploy && now alias && now rm --safe service-name"
+  },
+  "dependencies": {
+    "co-body": "^5.1.1",
+    "config": "^1.30.0",
+    "dotenv-safe": "^5.0.1",
+    "filter-object": "^3.0.0",
+    "koa-gzip": "^0.1.0",
+    "koa-micro": "^1.0.1",
+    "koa-mount": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "koa2-mongoose-crud": "^1.0.0",
+    "mongodb-uri": "^0.9.7",
+    "mongoose": "^5.0.15",
+    "pify": "^3.0.0",
+    "request": "^2.85.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "standard": "^11.0.1"
+  }
+}
