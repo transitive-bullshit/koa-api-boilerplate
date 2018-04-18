@@ -22,6 +22,6 @@ const server = app.listen(port, () => {
 process.on('SIGINT', () => server.close(shutdown))
 
 // export for test suite
-module.exports.app = app
-module.exports.listen = (done) => server.listening ? done() : server.on('listening', done)
-module.exports.close = (done) => server.close(done)
+exports.app = app
+exports.listen = (done) => server.listening ? done() : server.on('listening', done)
+exports.close = (done) => server.close(done)

@@ -18,7 +18,7 @@ pri.pst = pri.post
 pub.use(middleware.handleMongodbErrors)
 
 module.exports = () => compose([
-  pub.middleware(),
+  pub.routes(),
   auth(), me(),
-  pri.middleware()
+  pri.routes()
 ])

@@ -16,6 +16,17 @@
 - [koa2-mongoose-crud](https://github.com/transitive-bullshit/koa2-mongoose-crud) - CRUD middleware for Mongoose models
   - Quickly create RESTful APIs over mongodb models
 
+## Todo
+
+- acl authorization
+- jwt authentication
+- github / facebook / twitter oauth flows
+- redo mongoose base model and revisit safePaths stuff
+- revisit db abstraction
+
+- accompanying frontend CRA boilerplate
+- user signup / signin / signout / reset password flows
+
 ## License
 
 MIT © [Travis Fischer](https://github.com/transitive-bullshit)
