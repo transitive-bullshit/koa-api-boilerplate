@@ -21,6 +21,7 @@
     "config": "^1.30.0",
     "dotenv-safe": "^5.0.1",
     "filter-object": "^3.0.0",
+    "koa-compose": "^4.0.0",
     "koa-gzip": "^0.1.0",
     "koa-micro": "^1.0.1",
     "koa-mount": "^3.0.0",
