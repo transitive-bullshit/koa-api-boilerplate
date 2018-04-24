@@ -14,6 +14,8 @@ pri.pst = pri.post
 pub.put('/auth/signin', require('./auth/signin'))
 pub.put('/auth/signup', require('./auth/signup'))
 
+// pub.put('/auth/github', require('./auth/github'))
+
 // user resource crud
 pri.get('/users/:user', require('./users').read)
 pri.put('/users/:user', require('./users').update)
