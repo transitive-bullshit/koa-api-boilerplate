@@ -4,21 +4,23 @@ const Router = require('koa-router')
 const compose = require('koa-compose')
 const middleware = require('../lib/middleware')
 
-const {
-  auth,
-  me
-} = middleware
-
 const pub = new Router()
 const pri = new Router()
 
 pub.pst = pub.post
 pri.pst = pri.post
 
-pub.use(middleware.handleMongodbErrors)
+// authentication
+pub.put('/auth/signin', require('./auth/signin'))
+pub.put('/auth/signup', require('./auth/signup'))
+
+// user resource crud
+pri.get('/users/:user', require('./users').read)
+pri.put('/users/:user', require('./users').update)
 
 module.exports = () => compose([
+  middleware.handleMongodbErrors,
   pub.routes(),
-  auth(), me(),
+  middleware.authenticate, middleware.me(),
   pri.routes()
 ])

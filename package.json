@@ -17,21 +17,31 @@
     "force-deploy": "yarn run deploy && now alias && now rm --safe service-name"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "co-body": "^5.1.1",
     "config": "^1.30.0",
     "dotenv-safe": "^5.0.1",
+    "email-validator": "^2.0.3",
     "filter-object": "^3.0.0",
+    "jsonwebtoken": "^8.2.1",
     "koa-compose": "^4.0.0",
     "koa-gzip": "^0.1.0",
+    "koa-jwt": "^3.3.1",
     "koa-micro": "^1.0.1",
     "koa-mount": "^3.0.0",
+    "koa-passport": "^4.0.1",
     "koa-router": "^7.4.0",
     "koa2-mongoose-crud": "^1.0.0",
     "mongodb-uri": "^0.9.7",
     "mongoose": "^5.0.15",
+    "passport-facebook": "^2.1.1",
+    "passport-github": "^1.1.0",
+    "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.4",
     "pify": "^3.0.0",
     "request": "^2.85.0",
-    "request-promise-native": "^1.0.5"
+    "request-promise-native": "^1.0.5",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "ava": "^0.25.0",

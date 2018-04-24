@@ -18,8 +18,8 @@
 
 ## Todo
 
-- acl authorization
 - jwt authentication
+- acl authorization
 - github / facebook / twitter oauth flows
 - redo mongoose base model and revisit safePaths stuff
 - revisit db abstraction
