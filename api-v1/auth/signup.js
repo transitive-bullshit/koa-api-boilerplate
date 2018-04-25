@@ -2,18 +2,16 @@
 
 const { User } = require('lib/models')
 const getAuthResponse = require('./get-auth-response')
-// const signin = require('./signin')
+const signin = require('./signin')
 
 const parse = require('co-body')
 
 module.exports = async (ctx) => {
-  /*
   try {
     // try signing in to see if the user already exists
     await signin(ctx)
     return
   } catch (err) { }
-  */
 
   const body = await parse(ctx)
   ctx.assertParam(body.email, 'email')

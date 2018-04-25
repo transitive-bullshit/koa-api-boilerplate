@@ -2,7 +2,7 @@
 
 const { User } = require('lib/models')
 const logger = require('lib/logger')
-const github = require('lib/services/github')
+const facebook = require('lib/services/facebook')
 
 const { createUser } = require('./signup')
 const getAuthResponse = require('./get-auth-response')
@@ -12,17 +12,15 @@ const parse = require('co-body')
 module.exports = async (ctx) => {
   const body = await parse(ctx)
 
-  const {
-    access_token: accessToken
-  } = await github.auth(body)
-  ctx.assert(accessToken, 400, 'authentication error')
+  const { accessToken } = body
+  ctx.assertParam(accessToken, 'accessToken')
 
-  logger.info(JSON.stringify({ accessToken }, null, 2))
+  logger.info(JSON.stringify(body, null, 2))
 
-  const ghUser = await github.getMe({ accessToken })
-  ctx.assert(ghUser, 400, 'error fetching github user')
+  const fbUser = await facebook.getMe({ accessToken })
+  ctx.assert(fbUser, 400, 'error fetching facebook user')
 
-  logger.info('github', JSON.stringify(ghUser, null, 2))
+  logger.info('facebook', JSON.stringify(fbUser, null, 2))
 
   const opts = { }
   let user
@@ -33,8 +31,8 @@ module.exports = async (ctx) => {
   } else {
     user = await User.findOne({
       $or: [
-        { 'providers.github.id': ghUser.id },
-        { 'email': ghUser.email.toLowerCase() }
+        { 'providers.facebook.id': fbUser.id },
+        { 'email': fbUser.email.toLowerCase() }
       ]
     }, null, {
       collation: User.collation
@@ -42,7 +40,7 @@ module.exports = async (ctx) => {
 
     if (user) {
       // user has previously created an account and is trying to login with
-      // github. TODO: is automatically logging them in and adding github
+      // facebook. TODO: is automatically logging them in and adding facebook
       // to a matched email account secure? Probably not unless they've also
       // verified their email, but for our purposes it should be fine...
     } else {
@@ -50,16 +48,16 @@ module.exports = async (ctx) => {
 
       // user is authenticating a new account for the first time
       user = await createUser(ctx, {
-        email: ghUser.email,
-        name: ghUser.name,
-        image: ghUser.avatar_url
+        email: fbUser.email,
+        name: fbUser.name,
+        image: fbUser.picture.data.url
       })
     }
   }
 
-  user.providers.github = {
-    provider: 'github',
-    id: ghUser.id,
+  user.providers.facebook = {
+    provider: 'facebook',
+    id: fbUser.id,
     accessToken
   }
 

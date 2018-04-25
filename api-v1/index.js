@@ -12,10 +12,11 @@ pri.pst = pri.post
 
 // authentication
 pub.put('/auth/signin', require('./auth/signin'))
-pub.post('/auth/signup', require('./auth/signup'))
+pub.pst('/auth/signup', require('./auth/signup'))
 
 // third-party authentication
 pub.put('/auth/github', middleware.authenticate({ passthrough: true }), require('./auth/github'))
+pub.put('/auth/facebook', middleware.authenticate({ passthrough: true }), require('./auth/facebook'))
 
 // user resource crud
 pri.get('/users/:user', require('./users').read)

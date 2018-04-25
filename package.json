@@ -22,6 +22,7 @@
     "config": "^1.30.0",
     "dotenv-safe": "^5.0.1",
     "email-validator": "^2.0.3",
+    "fb": "^2.0.0",
     "filter-object": "^3.0.0",
     "jsonwebtoken": "^8.2.1",
     "koa-compose": "^4.0.0",
