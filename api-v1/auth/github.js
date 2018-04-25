@@ -1,6 +1,7 @@
 'use strict'
 
 const { User } = require('lib/models')
+const logger = require('lib/logger')
 const github = require('lib/services/github')
 
 const { createUser } = require('./signup')
@@ -16,8 +17,12 @@ module.exports = async (ctx) => {
   } = await github.auth(body)
   ctx.assert(accessToken, 400, 'authentication error')
 
+  logger.info(JSON.stringify({ accessToken }, null, 2))
+
   const ghUser = await github.getMe({ accessToken })
   ctx.assert(ghUser, 400, 'error fetching user')
+
+  logger.info(JSON.stringify(ghUser, null, 2))
 
   const opts = { }
   let user
@@ -44,7 +49,7 @@ module.exports = async (ctx) => {
       opts.new = true
 
       // user is authenticating a new account for the first time
-      user = await createUser({
+      user = await createUser(ctx, {
         email: ghUser.email,
         name: ghUser.name,
         image: ghUser.avatar_url
