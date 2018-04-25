@@ -14,7 +14,7 @@ const User = new Schema({
   role: { type: String, default: 'user' },
 
   // metadata
-  displayName: { type: String },
+  name: { type: String },
   firstName: { type: String },
   lastName: { type: String },
   image: { type: String },
@@ -63,7 +63,7 @@ User.pre('save', function (next) {
 User.statics.safePaths = {
   create: [
     'email',
-    'displayName',
+    'name',
     'firstName',
     'lastName',
     'password',

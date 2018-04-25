@@ -2,10 +2,11 @@
 
 const jwt = require('jsonwebtoken')
 
-module.exports = (user) => {
+module.exports = (user, opts = { }) => {
   const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET)
 
   return {
+    ...opts,
     token,
     user: user.getPublicDocument()
   }
