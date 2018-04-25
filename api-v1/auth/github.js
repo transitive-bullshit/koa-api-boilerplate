@@ -28,6 +28,7 @@ module.exports = async (ctx) => {
   let user
 
   if (ctx.state.user) {
+    // currently authenticated user is linking their account to github
     user = await User.findById(ctx.state.user.id)
     ctx.assert(user, 404, 'error fetching authenticated user')
   } else {
