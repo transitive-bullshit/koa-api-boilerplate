@@ -22,7 +22,7 @@ module.exports = async (ctx) => {
   const ghUser = await github.getMe({ accessToken })
   ctx.assert(ghUser, 400, 'error fetching user')
 
-  logger.info(JSON.stringify(ghUser, null, 2))
+  logger.info('github', JSON.stringify(ghUser, null, 2))
 
   const opts = { }
   let user

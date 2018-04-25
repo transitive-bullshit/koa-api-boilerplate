@@ -12,6 +12,9 @@ module.exports = async (ctx) => {
     password
   } = await parse(ctx)
 
+  ctx.assertParam(email, 'email')
+  ctx.assertParam(password, 'password')
+
   const user = await User.findOne({
     email: email.toLowerCase()
   }, null, {

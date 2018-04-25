@@ -2,7 +2,7 @@
 
 const Router = require('koa-router')
 const compose = require('koa-compose')
-const middleware = require('../lib/middleware')
+const middleware = require('lib/middleware')
 
 const pub = new Router()
 const pri = new Router()
@@ -12,8 +12,9 @@ pri.pst = pri.post
 
 // authentication
 pub.put('/auth/signin', require('./auth/signin'))
-pub.put('/auth/signup', require('./auth/signup'))
+pub.post('/auth/signup', require('./auth/signup'))
 
+// third-party authentication
 pub.put('/auth/github', middleware.authenticate({ passthrough: true }), require('./auth/github'))
 
 // user resource crud
